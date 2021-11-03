@@ -1,0 +1,34 @@
+{
+  "manifest_version": 1,
+  "name": "Sky Fish",
+  "version": "1.0.0",
+
+  "description": "Finds relevant data from manga title using AniList",
+
+  "icons": {
+    "48": "icons/icon-48.png"
+  },
+
+  "background": {
+    "scripts": ["/dist/backgroundScript.js"]
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://*.reddit.com/*"],
+      "js": ["/dist/main.js"]
+    }
+  ],
+
+  "options_ui": {
+    "page": "dist/config/config.html",
+    "browser_style": true,
+    "chrome_style": true
+  },
+
+  "permissions": [
+    "*://*.reddit.com/*",
+    "https://graphql.anilist.co/",
+    "storage"
+  ]
+}
