@@ -22,9 +22,6 @@ test("gets title after the word Source", () => {
   expect(displayController.getTitle("Source Steins;Gate 0")).toBe(
     "Steins;Gate 0"
   );
-  expect(displayController.getTitle("Source is Steins;Gate 0")).toBe(
-    "Steins;Gate 0"
-  );
   expect(displayController.getTitle("**Source** Steins;Gate 0")).toBe(
     "Steins;Gate 0"
   );
@@ -38,9 +35,6 @@ test("gets title after the word Sauce", () => {
     "Ura Sekai Picnic"
   );
   expect(displayController.getTitle("Sauce: Ura Sekai Picnic")).toBe(
-    "Ura Sekai Picnic"
-  );
-  expect(displayController.getTitle("Sauce is Ura Sekai Picnic")).toBe(
     "Ura Sekai Picnic"
   );
   expect(displayController.getTitle("**Sauce** Ura Sekai Picnic")).toBe(
