@@ -1,7 +1,7 @@
 {
   "name": "sky-fish",
   "version": "1.0.0",
-  "description": "",
+  "description": "Finds relevant data from manga title using AniList",
   "main": "index.js",
   "scripts": {
     "test": "jest"
@@ -10,9 +10,22 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "babel-loader": "^8.2.3",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "css-loader": "^6.5.1",
     "jest": "^27.3.1",
     "prettier": "2.4.1",
-    "webpack": "^5.60.0",
-    "webpack-cli": "^4.9.1"
+    "sass": "^1.43.4",
+    "sass-loader": "^12.3.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.62.1",
+    "webpack-cli": "^4.7.0"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "web-ext": "^6.5.0"
   }
 }
