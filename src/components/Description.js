@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Tags from "./Tags";
 import useOption from "./useOption";
 
@@ -24,3 +25,7 @@ const Description = (props) => {
 };
 
 export default Description;
+
+Description.propTypes = {
+  data: PropTypes.object.isRequired,
+};

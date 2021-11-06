@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from "react";
+import PropTypes from "prop-types";
 
 const Tags = (props) => {
   const [totalHighlighted, setTotalHighlighted] = useState(0);
@@ -41,3 +42,9 @@ const Tags = (props) => {
 };
 
 export default Tags;
+
+Tags.propTypes = {
+  match: PropTypes.array.isRequired,
+  tags: PropTypes.array.isRequired,
+  className: PropTypes.string.isRequired,
+};

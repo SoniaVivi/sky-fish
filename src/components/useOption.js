@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { loadOption } from "../storage";
 
 const useOption = (optionName) => {

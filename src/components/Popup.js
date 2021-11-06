@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import Description from "./Description";
 
 const Popup = (props) => {
@@ -64,3 +65,9 @@ const Popup = (props) => {
 };
 
 export default Popup;
+
+Popup.propTypes = {
+  title: PropTypes.string.isRequired,
+  close: PropTypes.func.isRequired,
+  position: PropTypes.object.isRequired,
+};
