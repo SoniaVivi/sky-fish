@@ -1,0 +1,119 @@
+$background: #ffffff;
+$border: #000000;
+$z-index: 9999999999999999999999;
+$hover: #2a8ed6;
+$button: #0479cf;
+$text: #000000;
+
+.sky-fish {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: unset;
+  background-color: unset;
+  font-size: 16px;
+  color: $text;
+}
+
+.sky-fish-popup {
+  position: absolute;
+  z-index: $z-index;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  width: 300px;
+  min-height: 250px;
+  height: fit-content;
+  padding: 20px;
+  padding-bottom: 15px;
+  border: 1px solid $border;
+  border-radius: 5px;
+
+  background-color: $background;
+}
+
+h1.sky-fish {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+button.search.sky-fish {
+  $height: 32px;
+  height: $height;
+  margin-top: 15px;
+  padding: 0 15px;
+  border-radius: $height * 0.75;
+  border: 1px solid $hover;
+  background-color: $button;
+  color: #ffffff;
+
+  &:hover {
+    background-color: $hover;
+  }
+}
+
+button.close.sky-fish {
+  $size: 26px;
+  position: relative;
+  align-self: flex-start;
+  width: $size;
+  height: $size;
+  margin: -15px;
+  border: 1px solid #ffffff;
+  border-radius: 50%;
+
+  &:hover {
+    background-color: rgba(85, 205, 252, 0.4);
+  }
+
+  * {
+    $width: 60%;
+    $height: 2px;
+    position: absolute;
+    top: 40%;
+    left: 19%;
+    max-width: $width;
+    max-height: $height;
+    min-width: $width;
+    min-height: $height;
+    background-color: #000000;
+  }
+
+  *:first-child {
+    transform: rotate(45deg);
+  }
+
+  *:last-child {
+    transform: rotate(135deg);
+  }
+}
+.sky-fish.footer,
+.sky-fish.genres,
+.sky-fish.tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+
+  span {
+    width: fit-content;
+    height: fit-content;
+    margin-top: 15px;
+    padding: 2px 4px;
+    font-size: 12px;
+    border: 1px solid $border;
+    border-radius: 3px;
+  }
+}
+
+.highlight.sky-fish {
+  background-color: $hover;
+  color: #ffffff;
+}
+
+p.sky-fish {
+  margin-top: 15px;
+}

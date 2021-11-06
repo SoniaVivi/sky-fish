@@ -1,12 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import getTitle from "./getTitle";
+import Popup from "./components/Popup";
 import "./style.scss";
 
 const displayController = (() => {
   let points = [0, 0];
   let _started = false;
-  let _popupContainer;
+  let _popupContainer = null;
+
+  const _removePopup = () => {
+    _popupContainer.remove();
+    _popupContainer = null;
+  };
 
   const _onMouseMove = (event) => {
     if (!event.ctrlKey && !_started) return;
@@ -14,20 +20,21 @@ const displayController = (() => {
     const target = event.originalTarget;
     const getPoint = () =>
       document.caretPositionFromPoint(event.clientX, event.clientY);
+
     if (validTargets.includes(target.nodeName) && !_started) {
+      _popupContainer && _removePopup();
       points[0] = getPoint().offset;
       _started = true;
     } else if (!event.ctrlKey && _started) {
       _started = false;
       points[1] = getPoint().offset;
-      let min = Math.min(...points);
-      let max = Math.max(...points);
+      const min = Math.min(...points);
+      const max = Math.max(...points);
+
       _createPopup(
-        getTitle(
-          max - min < 5
-            ? target.textContent
-            : getPoint().offsetNode.data.slice(min, max)
-        ),
+        max - min < 5
+          ? getTitle(target.textContent)
+          : getPoint().offsetNode.data.slice(min, max),
         { x: event.pageX, y: event.pageY }
       );
     }
@@ -38,27 +45,10 @@ const displayController = (() => {
       .querySelector("body")
       .appendChild(document.createElement("div"));
     ReactDOM.render(
-      <Popup title={title} position={position} />,
+      <Popup title={title} position={position} close={_removePopup} />,
       _popupContainer
     );
   };
-
-  const Popup = (props) => (
-    <div
-      style={{
-        position: "absolute",
-        top: props.position.y,
-        left: props.position.x,
-      }}
-    >
-      <h1>{props.title}</h1>
-      {props.description ? (
-        <div>
-          <p>Lorem ipsum dolor sit amet, congue oportere voluptatum vis et,</p>
-        </div>
-      ) : null}
-    </div>
-  );
 
   const start = () => {
     document.querySelector("body").addEventListener("mousemove", _onMouseMove);
@@ -67,6 +57,4 @@ const displayController = (() => {
   return { start, getTitle };
 })();
 
-if (typeof window != "undefined") {
-  window.setTimeout(() => displayController.start(), 500);
-}
+window.setTimeout(() => displayController.start(), 500);
