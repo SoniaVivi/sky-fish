@@ -17,9 +17,9 @@ const Description = (props) => {
         <span className="sky-fish status">
           {data.status.slice(0, 1) + data.status.slice(1).toLowerCase()}
         </span>
-        <span className="sky-fish volumes">{data?.volumes ?? "?"} Volumes</span>
+        <span className="sky-fish volumes">{data.volumes ?? "?"} Volumes</span>
         <span className="sky-fish chapters">
-          {data?.chapters ?? "?"} Chapters
+          {data.chapters ?? "?"} Chapters
         </span>
       </div>
     </div>
