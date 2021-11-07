@@ -4,8 +4,8 @@ import Tags from "./Tags";
 import useOption from "./useOption";
 
 const Description = (props) => {
-  const matchTags = useOption("matchTags");
-  const matchGenres = useOption("matchGenres");
+  const matchTags = useOption("matchTags")[0];
+  const matchGenres = useOption("matchGenres")[0];
   const data = props.data;
 
   return (
@@ -17,8 +17,10 @@ const Description = (props) => {
         <span className="sky-fish status">
           {data.status.slice(0, 1) + data.status.slice(1).toLowerCase()}
         </span>
-        <span className="sky-fish volumes">{data.volumes} Volumes</span>
-        <span className="sky-fish chapters">{data.chapters} Chapters</span>
+        <span className="sky-fish volumes">{data?.volumes ?? "?"} Volumes</span>
+        <span className="sky-fish chapters">
+          {data?.chapters ?? "?"} Chapters
+        </span>
       </div>
     </div>
   );

@@ -25,8 +25,7 @@ module.exports = {
   },
   entry: {
     main: "./src/displayController.js",
-    // "config/config": "./src/optionsController",
-    backgroundScript: "./src/aniListController",
+    "config/config": "./src/optionsController",
   },
   output: {
     path: path.resolve(__dirname, "dist"),

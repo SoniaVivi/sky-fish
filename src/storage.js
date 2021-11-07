@@ -1,12 +1,14 @@
 const defaults = {
-  matchTags: ["Isekai", "School", "Magic"],
-  matchGenres: ["Action", "Comedy", "Drama"],
+  matchTags: [],
+  matchGenres: [],
 };
 
 export const saveOption = (option, newValue) =>
+  //eslint-disable-next-line no-undef
   browser.storage.local.set({ [option]: newValue });
 
 export const loadOption = (option) =>
+  //eslint-disable-next-line no-undef
   browser.storage.local
     .get(option)
     .then((data) =>

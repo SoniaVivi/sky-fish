@@ -9,10 +9,6 @@
     "48": "icons/icon-48.png"
   },
 
-  "background": {
-    "scripts": ["/dist/backgroundScript.js"]
-  },
-
   "content_scripts": [
     {
       "matches": ["*://*.reddit.com/*"],

@@ -26,7 +26,6 @@ const Tags = (props) => {
 
   return (
     <div className={`sky-fish ${props.className}`}>
-      {console.log(props.tags)}
       {tags
         ? tags.slice(0, totalHighlighted + 4).map(({ name, highlight }, i) => (
             <span
