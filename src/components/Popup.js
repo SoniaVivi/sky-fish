@@ -23,7 +23,9 @@ const Popup = (props) => {
             name
           }
           title {
+            native
             romaji
+            english
           }
         }
       }`,
@@ -50,9 +52,9 @@ const Popup = (props) => {
         <div></div>
         <div></div>
       </button>
-      <h1 className="sky-fish">
-        {mangaData ? mangaData.title.romaji : props.title}
-      </h1>
+      <h1 className="sky-fish">{mangaData?.title?.native ?? null}</h1>
+      <h1 className="sky-fish">{mangaData?.title?.romaji ?? null}</h1>
+      <h1 className="sky-fish">{mangaData?.title?.english ?? props.title}</h1>
       {mangaData ? (
         <Description data={mangaData} />
       ) : (
