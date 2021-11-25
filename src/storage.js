@@ -1,6 +1,7 @@
 const defaults = {
   matchTags: [],
   matchGenres: [],
+  hotKeys: { ctrlKey: true, shiftKey: false },
 };
 
 export const saveOption = (option, newValue) =>

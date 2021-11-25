@@ -3,9 +3,10 @@ import { loadOption, saveOption } from "../storage";
 
 const useOption = (optionName) => {
   const [stateOption, setStateOption] = useState(null);
-  useEffect(() => {
-    stateOption ? saveOption(optionName, stateOption) : null;
-  }, [stateOption, optionName]);
+  useEffect(
+    () => (stateOption ? saveOption(optionName, stateOption) : null),
+    [stateOption, optionName]
+  );
 
   if (!stateOption) {
     loadOption(optionName)
