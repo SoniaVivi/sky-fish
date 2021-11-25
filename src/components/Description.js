@@ -12,7 +12,11 @@ const Description = (props) => {
     <div className="sky-fish">
       <Tags className="genres" tags={data.tags} match={matchTags} />
       <Tags className="tags" tags={data.genres} match={matchGenres} />
-      <p className="sky-fish">{data.description}</p>
+      <p className="sky-fish">
+        {props.data.description
+          .replace(/(<br>)+/g, "\n")
+          .replace(/(<\/*\w+>)/g, "")}
+      </p>
       <div className="sky-fish footer">
         <span className="sky-fish status">
           {data.status.slice(0, 1) + data.status.slice(1).toLowerCase()}
