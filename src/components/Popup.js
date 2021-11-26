@@ -19,6 +19,7 @@ const Popup = (props) => {
           volumes
           chapters
           genres
+          siteUrl
           tags {
             name
           }
@@ -34,11 +35,28 @@ const Popup = (props) => {
     })
       .then((r) => r.json())
       .then((responseData) =>
-        setMangaData({
-          ...responseData.data.Media,
-          tags: responseData.data.Media.tags.map((tag) => tag.name),
-        })
+        setMangaData(
+          responseData?.data?.Media
+            ? {
+                ...responseData.data.Media,
+                tags: responseData.data.Media.tags.map((tag) => tag.name),
+              }
+            : -1
+        )
       );
+
+  let child;
+  if (mangaData == -1) {
+    child = <h3 className="skyfish">Manga not Found</h3>;
+  } else if (mangaData) {
+    child = <Description data={mangaData} />;
+  } else {
+    child = (
+      <button className="sky-fish search" onClick={fetchFromAniList}>
+        Search on Anilist
+      </button>
+    );
+  }
 
   return (
     <div
@@ -55,13 +73,15 @@ const Popup = (props) => {
       <h1 className="sky-fish">{mangaData?.title?.native ?? null}</h1>
       <h1 className="sky-fish">{mangaData?.title?.romaji ?? null}</h1>
       <h1 className="sky-fish">{mangaData?.title?.english ?? props.title}</h1>
-      {mangaData ? (
-        <Description data={mangaData} />
-      ) : (
-        <button className="sky-fish search" onClick={fetchFromAniList}>
-          Search on Anilist
-        </button>
-      )}
+      {mangaData?.siteUrl ? (
+        <a
+          className="sky-fish"
+          onClick={() => window.open(mangaData.siteUrl, "_blank")}
+        >
+          Open in AniList
+        </a>
+      ) : null}
+      {child}
     </div>
   );
 };
