@@ -19,3 +19,8 @@ To install, clone repository then run `npm install`
 To run in a browser run `npx webpack` then `web-ext run`
 
 To generate styles for config run `sass src/config.scss dist/config/config.css`
+
+
+**Signing**
+
+To sign extension run `web-ext sign --api-key [api-key/JWT issuer] --api-secret [api-secret/JWT secret] --no-config-discovery --ignore-files src/*`
