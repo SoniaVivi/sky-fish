@@ -1,6 +1,19 @@
 **Sky Fish**
 
-A browser extension to retrieve manga description and tags from title
+![skyFish](https://user-images.githubusercontent.com/55420399/146711718-a1674ffe-0a0c-42a0-9613-aaf7754af3a7.png)
+
+
+A browser extension to retrieve manga info from Reddit comments and posts
+
+**Features**
+
+- Fetch alternate manga names, genres, tags, description, publishing status, volume and chapter quantity from Anilist.
+
+- Highlight genres and tags of interest
+
+- Button to open respective Anilist page in another tab
+
+- Rebindable hotkeys
 
 **Installing as user**
 
