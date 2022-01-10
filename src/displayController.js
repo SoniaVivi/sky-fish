@@ -23,12 +23,11 @@ const displayController = (() => {
 
   const _onMouseMove = (event) => {
     if (!_allKeysPressed(event) && !_started) return;
-    const validTargets = ["EM", "A", "H1", "STRONG", "P"];
     const target = event.originalTarget;
     const getPoint = () =>
       document.caretPositionFromPoint(event.clientX, event.clientY);
 
-    if (validTargets.includes(target.nodeName) && !_started) {
+    if (!_started) {
       _popupContainer && _removePopup();
       points[0] = getPoint().offset;
       _started = true;
@@ -37,11 +36,12 @@ const displayController = (() => {
       points[1] = getPoint().offset;
       const min = Math.min(...points);
       const max = Math.max(...points);
+      let searchOptions = [...getTitle(target.textContent)];
 
       _createPopup(
         max - min < 5
-          ? getTitle(target.textContent)
-          : getPoint().offsetNode.data.slice(min, max),
+          ? searchOptions
+          : [getPoint().offsetNode.data.slice(min, max), ...searchOptions],
         { x: event.pageX, y: event.pageY }
       );
     }
