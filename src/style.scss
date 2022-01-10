@@ -21,7 +21,7 @@ $text: #000000;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  width: 300px;
+  width: 360px;
   min-height: 250px;
   height: fit-content;
   padding: 20px;
@@ -38,21 +38,33 @@ h1.sky-fish {
   width: 100%;
   font-size: 20px;
   font-weight: 600;
+  text-align: center !important;
+}
+
+div.search.sky-fish {
+  display: flex;
+  width: 100% !important;
+  margin-bottom: 15px;
 }
 
 button.search.sky-fish {
-  $height: 32px;
-  height: $height;
-  margin-top: 15px;
+  $height: 24px;
+  height: $height !important;
+  margin-right: 15px;
   padding: 0 15px;
-  border-radius: $height * 0.75;
+  border-radius: $height * 0.75 !important;
   border: 1px solid $hover;
   background-color: $button;
+  font-size: 16px !important;
   color: #ffffff;
 
   &:hover {
     background-color: $hover;
   }
+}
+
+span.search.sky-fish {
+  font-size: 16px !important;
 }
 
 button.close.sky-fish {

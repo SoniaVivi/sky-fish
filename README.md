@@ -2,7 +2,6 @@
 
 ![skyFish](https://user-images.githubusercontent.com/55420399/146711718-a1674ffe-0a0c-42a0-9613-aaf7754af3a7.png)
 
-
 A browser extension to retrieve manga info from Reddit comments and posts
 
 **Features**
@@ -14,6 +13,10 @@ A browser extension to retrieve manga info from Reddit comments and posts
 - Button to open respective Anilist page in another tab
 
 - Rebindable hotkeys
+
+**How to use**
+
+Press and hold the activation hotkey (by default ctrl) and drag the cursor horizontally across the text. If the distance from start to end is greater than 4 characters, it will include an option containing the text that is in between the ends.
 
 **Installing as user**
 
@@ -32,7 +35,6 @@ To install, clone repository then run `npm install`
 To run in a browser run `npx webpack` then `web-ext run`
 
 To generate styles for config run `sass src/config.scss dist/config/config.css`
-
 
 **Signing**
 

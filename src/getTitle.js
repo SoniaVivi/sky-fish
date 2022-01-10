@@ -1,16 +1,23 @@
 const getTitle = (title) => {
-  regexList = [
-    /(?<=\[|\(|\<|\{|\n)(.*?)(?=\s*\]|\)|\>|\}|\n)/,
+  const regexList = [
+    /(?<=\[)(.*?)(?=\s*\])/,
+    /(?<=<)(.*?)(?=\s*>)/,
+    /(?<=\()(.*?)(?=\s*\))/,
+    /(?<=\{)(.*?)(?=\s*\})/,
+    /(?<=\n)(.*?)(?=\s*\n)/,
     /(?<=((Source)|(Sauce)|(Manga))(\*\*)*:*\s+)(?:.+)/,
-    /.+\S/,
+    /(?<=(\[(.*)\]))(?:.+)/,
+    /(?<=(\[(.*)\]))(?:.+)(?=\s*-)/,
+    /(.*?)(?=\s*\n)/,
   ];
+  let matches = [title];
   for (const regex of regexList) {
-    match = title.match(regex);
+    const match = title.match(regex);
     if (match) {
-      return match[0];
+      matches.unshift(match[0]);
     }
   }
-  return title;
+  return matches;
 };
-
+//eslint-disable-next-line no-undef
 module.exports = getTitle;

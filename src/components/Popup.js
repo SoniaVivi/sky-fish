@@ -4,7 +4,7 @@ import Description from "./Description";
 
 const Popup = (props) => {
   const [mangaData, setMangaData] = useState(null);
-  const fetchFromAniList = () =>
+  const fetchFromAniList = (searchString) =>
     fetch("https://graphql.anilist.co/", {
       method: "POST",
       headers: {
@@ -30,7 +30,7 @@ const Popup = (props) => {
           }
         }
       }`,
-        variables: { search: props.title },
+        variables: { search: searchString },
       }),
     })
       .then((r) => r.json())
@@ -51,11 +51,17 @@ const Popup = (props) => {
   } else if (mangaData) {
     child = <Description data={mangaData} />;
   } else {
-    child = (
-      <button className="sky-fish search" onClick={fetchFromAniList}>
-        Search on Anilist
-      </button>
-    );
+    child = props.title.map((str, i) => (
+      <div key={i} className="search sky-fish">
+        <button
+          className="sky-fish search"
+          onClick={() => fetchFromAniList(str)}
+        >
+          Search
+        </button>
+        <span className="sky-fish search">{str}</span>
+      </div>
+    ));
   }
 
   return (
@@ -72,7 +78,7 @@ const Popup = (props) => {
       </button>
       <h1 className="sky-fish">{mangaData?.title?.native ?? null}</h1>
       <h1 className="sky-fish">{mangaData?.title?.romaji ?? null}</h1>
-      <h1 className="sky-fish">{mangaData?.title?.english ?? props.title}</h1>
+      <h1 className="sky-fish">{mangaData?.title?.english ?? null}</h1>
       {mangaData?.siteUrl ? (
         <a
           className="sky-fish"
@@ -89,7 +95,7 @@ const Popup = (props) => {
 export default Popup;
 
 Popup.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.array.isRequired,
   close: PropTypes.func.isRequired,
   position: PropTypes.object.isRequired,
 };
